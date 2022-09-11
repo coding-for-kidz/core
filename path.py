@@ -20,3 +20,4 @@ def cfk_dir() -> PurePath:
         mod_dir /= item
         if item == "coding-for-kidz":
             return mod_dir
+    return current_dir
