@@ -16,6 +16,7 @@
 """logs for the server"""
 import datetime
 import logging
+
 from services.web.core.color import color_text, OKBLUE, OKGREEN, WARNING, FAIL
 from services.web.website.config import GlobalConfig
 
@@ -29,10 +30,7 @@ class LogType:
 
 
 def log_message(message: str, now):
-    def logger():
-        print(color_text("[" + now + "] ", OKBLUE) + message)
-
-    return logger
+    print(color_text("[" + now + "] ", OKBLUE) + message)
 
 
 def log(message: str, log_level=1, logger=LogType.INFO) -> None:
@@ -41,13 +39,12 @@ def log(message: str, log_level=1, logger=LogType.INFO) -> None:
     logger("[" + now + "] " + message)
     if int(log_level) <= int(GlobalConfig.log_level):
         if (logger == LogType.INFO) or (logger == LogType.DEBUG):
-            to_log = log_message(message, now)
+            log_message(message, now)
         elif logger == LogType.SUCCESS:
-            to_log = log_message(color_text(message, OKGREEN), now)
+            log_message(color_text(message, OKGREEN), now)
         elif logger == LogType.WARNING:
-            to_log = log_message(color_text(message, WARNING), now)
+            log_message(color_text(message, WARNING), now)
         elif logger == LogType.ERROR:
-            to_log = log_message(color_text(message, FAIL), now)
+            log_message(color_text(message, FAIL), now)
         else:
-            to_log = log_message(message, now)
-        to_log()
+            log_message(message, now)

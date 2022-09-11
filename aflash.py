@@ -14,4 +14,4 @@
 # TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""An Async flash socket that flashes messages to a user while they are on a page asynchronously"""
+"""A flasher that flashes messages to a user while they are on a page without them having to reload."""
